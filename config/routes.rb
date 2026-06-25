@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   resources :users,path_names: { new: 'sign_up' }
+  resources :posts
   root to: "homes#top"
   resource :session
+  post "guest_log_in", to: 
   resources :passwords, param: :token
 
   get "log_in", to: "sessions#new"

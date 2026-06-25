@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       start_new_session_for @user
-      redirect_to root_path, notice: "新規登録完了！！"
+      redirect_to posts_path, notice: "新規登録完了！！"
     else
       render :new,status: :unprocessable_entity
     end
