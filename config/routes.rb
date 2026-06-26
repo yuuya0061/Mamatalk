@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :posts
   root to: "homes#top"
   resource :session
-  post "guest_log_in", to: 
+  post "guest_log_in", to: "sessions#guest"
   resources :passwords, param: :token
 
   get "log_in", to: "sessions#new"

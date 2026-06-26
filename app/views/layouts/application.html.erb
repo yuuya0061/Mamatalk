@@ -26,6 +26,11 @@
   </head>
 
   <body>
+  <% flash.each do |type, message| %>
+  <div class="alert alert-<%= type == "notice" ? "success" : "danger" %>">
+    <%= message %>
+  </div>
+  <% end %>
   
     <% if authenticated? %>
       <%= render "layouts/header" %>
