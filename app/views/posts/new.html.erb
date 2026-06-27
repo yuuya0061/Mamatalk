@@ -2,8 +2,23 @@
 
 <%= form_with model: @post do |f| %>
   <div>
-    <%= label :title, "タイトル" %>
+    <%= label :title, "タイトル" %><br>
     <%= f.text_field :title %>
   </div>
+
+  <div>
+    <%= label :body, "本文" %><br>
+    <%= f.text_area :body %>
+  </div>
+
+  <div>
+    <%- label :image, "画像" %><br>
+    <%= f.file_field :image, accept: "image/*" %>
+  </div>
+
+  <div>
+   <%= f.submit "投稿" %>
+  </div>
+
 
 <% end %>

@@ -1,3 +1,16 @@
 <div>
   <h1>投稿一覧</h1>
 </div>
+
+<% @posts.each do |post| %>
+   <h3><%= link_to post.title, post_path(post) %></h3>
+
+
+  <p><%= post.body %> </p>
+  
+  <%= image_tag post.get_image, width: 200 %>
+  
+  <p>ユーザーネーム:<%= post.user.name %></p>
+
+<% end %>
+
