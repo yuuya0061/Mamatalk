@@ -11,6 +11,7 @@ class UsersController < ApplicationController
       start_new_session_for @user
       redirect_to posts_path, notice: "新規登録完了！！"
     else
+      flash.now[:alert] = "新規登録失敗"
       render :new,status: :unprocessable_entity
     end
   end

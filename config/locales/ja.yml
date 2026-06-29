@@ -2,9 +2,14 @@ ja:
   activerecord:
     models:
       user: ユーザー
+      post: 投稿
 
     attributes:
       user:
         name: 名前
         email_address: メールアドレス
         password: パスワード
+
+      post: 
+        title: タイトル
+        body: 本文

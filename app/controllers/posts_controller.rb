@@ -20,6 +20,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to posts_path, notice:"投稿しました！"
     else
+      flash.now[:alert] = "新規投稿失敗しました"
       render :new,status: :unprocessable_entity
     end
   end
@@ -33,6 +34,7 @@ class PostsController < ApplicationController
     if @post.update(post_params)
       redirect_to post_path(@post), notice: "投稿更新しました" 
     else 
+      flash.now[:alert] = "投稿の更新に失敗しました"
       render :edit, status: :unprocessable_entity
     end
   end
@@ -50,7 +52,7 @@ class PostsController < ApplicationController
   end
 
   def correct_user
-    @post = Post.find(params[:id])
-    redirect_to posts_path if @post.user != Current.user
+    @post = Current.user.posts.find_by(id: params[:id])
+    redirect_to posts_path unless @post
   end
 end
