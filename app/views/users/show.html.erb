@@ -1,2 +1,7 @@
-<h1>User#show</h1>
-<p>Find me in app/views/user/show.html.erb</p>
+<h1>マイページ</h1>
+
+<%= image_tag @user.get_profile_image(150, 150), class: "rounded-circle" %>
+
+<p>名前: <%= @user.name %></p>
+<p>自己紹介</p>
+<p><%= @user.introduction %></p>

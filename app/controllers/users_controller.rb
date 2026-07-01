@@ -17,12 +17,14 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = User.find(params[:id])
+    @posts = @user.posts.order(created_at: :desc)
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:name, :email_address, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email_address, :password, :password_confirmation, :profile_image, :introduction)
   end
   
 end
