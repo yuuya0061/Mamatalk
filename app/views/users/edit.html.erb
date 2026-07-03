@@ -1,0 +1,44 @@
+<div>
+  <h2>編集</h2>
+</div>
+
+
+<%= form_with model: @user do |f| %>
+  <% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= @user.errors.count %>件のエラーが発生したため、更新できませんでした。
+    </h2>
+
+    <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div> 
+  <%= f.label :profile_image, "プロフィール画像" %>
+  <%= f.file_field :profile_image %>
+</div>
+
+<div>
+  <%= f.label :name, "名前" %><br>
+  <%= f.text_field :name %>
+</div>
+
+<div>
+  <%= f.label :email_address, "メールアドレス" %><br>
+  <%= f.email_field :email_address %>
+</div>
+
+<div>
+  <%= f.label :introduction, "自己紹介" %><br>
+  <%= f.text_area :introduction %>
+</div>
+
+<div>
+  <%= f.submit "更新する" %>
+</div>
+<% end %>

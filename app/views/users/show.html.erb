@@ -3,5 +3,32 @@
 <%= image_tag @user.get_profile_image(150, 150), class: "rounded-circle" %>
 
 <p>名前: <%= @user.name %></p>
+<% if @user == Current.user %>
+<p>メールアドレス: <%= @user.email_address %></p>
+<% end %>
 <p>自己紹介</p>
 <p><%= @user.introduction %></p>
+
+<p>フォロー</P>
+
+<p>フォロワー</p>
+
+<% if @user == Current.user %>
+  <%= link_to "プロフィール編集", edit_user_path(@user) %>
+
+  <%= button_to "退会", user_path(@user),
+                       method: :delete,
+                       data: { turbo_confirm: "本当に退会しますか"} %>
+  <% end %>
+
+  <hr>
+
+  <h3>投稿一覧</h3>
+   <% @posts.each do |post| %>
+    <div>
+      <h4><%= post.title %></h4>
+      <p><%= truncate(post.body, length: 100) %></p>
+      <p><%= post.created_at %></p>
+    </div>
+    <hr>
+  <% end %>

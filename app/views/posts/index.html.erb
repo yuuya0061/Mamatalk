@@ -10,7 +10,7 @@
   
   <%= image_tag post.get_image, width: 200 %>
   
-  <p>ユーザーネーム:<%= post.user.name %></p>
+  <p>ユーザーネーム:<%= link_to post.user.name, user_path(post.user.id) %></p>
 
 <% end %>
 

@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
   validates :name, presence: true
   validates :email_address, presence: true, uniqueness: true
-  validates :password, presence: true,length: { minimum: 6 }
+  validates :password, presence: true,length: { minimum: 6 }, on: :create
 
   def get_profile_image(width, height)
     if profile_image.attached?
