@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
    allow_unauthenticated_access
-  before_action :correct_user, only: [:edit, :update]
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   def new
     @user = User.new
@@ -35,6 +35,14 @@ def update
     render :edit, status: :unprocessable_entity
   end
 end
+
+def destroy
+  user = Current.user
+  terminate_session
+  user.destroy
+  redirect_to root_path, notice: "退会しました", status: :see_other
+end
+
 
   private
 

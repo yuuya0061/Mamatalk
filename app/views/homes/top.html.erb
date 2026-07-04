@@ -1,23 +1,23 @@
-<div class="main-visual">
-  <h1>Mamatalk</h1>
-
-  <div>
-    <%= link_to "ログイン", posts_path %>
+<div class="container text-center mt-5" >
+  <h1 class = "fw-bold mb-1">ママトーク<i class="fa-regular fa-comment"></i></h1>
+  <div class="text-center">
+    <%= image_tag "mama.png", class: "img-fluid w-25", alt: "ママイラスト" %>
+  </div>
+  <div class="text fs-5">
+    <p>育児の悩みや日々の出来事を<br>
+       気軽に投稿・相談できる<br>
+       ママ同士の交流アプリです。<br>
+    </p>
+    <p>
+       同じ子育て中のママと繋がり、<br>
+       経験やアドバイスを共有できます。
+    </p>
+    
   </div>
 
-  <div>
-    <%= link_to "新規登録", new_user_path %>
-  </diV>
-
-  <div>
-    <%= button_to "ゲストログイン", guest_log_in_path, method: :post %>
+  <div class="d-grid gap-3 col-md-4 mx-auto mb-5">
+    <%= link_to "ログイン", posts_path, class: "btn btn-primary" %>
+    <%= link_to "新規登録", new_user_path, class: "btn btn-success" %>
+    <%= button_to "ゲストログイン", guest_log_in_path, method: :post, class: "btn btn-secondary w-100" %>
   </div>
-  
-
- <div>
-  <h3>Mamatalkとは<h3>
-    <p>育児中のママが気軽に悩みや喜びを</p>
-    <p>共有できるコミュニティアプリです。</p>
-</div>
- 
 </div>
