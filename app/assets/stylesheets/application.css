@@ -1,3 +1,32 @@
+body {
+  background-color: #fffaf3;
+}
+
+.title {
+  font-family: "Zen Maru Gothic", sans-serif;
+  font-size: 3.5rem;
+  font-weight: 700;
+}
+
+.flash {
+  padding: 15px;
+  margin: 15px 0;
+  border-radius: 10px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.flash-notice {
+  background-color: #e8f8ee;
+  color: #2d6a4f;
+  border: 1px solid #b7e4c7;
+}
+
+.flash-alert {
+  background-color: #fff2f2;
+  color: #d46a6a;
+  border: 1px solid #f5c2c7;
+}
 /*
  * This is a manifest file that'll be compiled into application.css.
  *

@@ -1,8 +1,18 @@
-<h1>パスワードお忘れですか?</h1>
+<%= render "layouts/auth_layout", title: "パスワードお忘れですか?" do %>
+
 
 <%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
 
-<%= form_with url: passwords_path do |form| %>
-  <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "メールアドレス入力", value: params[:email_address] %><br>
-  <%= form.submit "メールアドレス再設定" %>
+  <%= form_with url: passwords_path do |f| %>
+    <div class="mb-4">
+      <%= f.label :email_address, "メールアドレス", class: "form-label" %>
+      <%= f.email_field :email_address, class: "form-control",
+      required: true, 
+      autofocus: true, 
+      autocomplete: "username", 
+      placeholder: "メールアドレス入力", value: params[:email_address] %>
+    </div>
+
+    <%= f.submit "メールアドレス再設定" %>
+  <% end %>
 <% end %>
