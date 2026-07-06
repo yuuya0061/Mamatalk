@@ -1,4 +1,4 @@
-<h1>新規投稿</h1>
+<%= render "layouts/auth_layout", title: "新規投稿" do %>
 
 <%= form_with model: @post do |f| %>
   <% if @post.errors.any? %>
@@ -35,4 +35,5 @@
   </div>
 
 
+  <% end %>
 <% end %>

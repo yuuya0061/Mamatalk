@@ -1,4 +1,4 @@
-<h1>マイページ</h1>
+<%= render "layouts/auth_layout", title: "マイページ" do %>
 
 <%= image_tag @user.get_profile_image(150, 150), class: "rounded-circle" %>
 
@@ -33,3 +33,4 @@
     </div>
     <hr>
   <% end %>
+<% end %>
