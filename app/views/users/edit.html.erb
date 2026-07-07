@@ -1,44 +1,42 @@
-<div>
-  <h2>編集</h2>
-</div>
+<%= render "layouts/auth_layout", title: "ユーザー編集" do %>
 
+  <%= form_with model: @user do |f| %>
+    <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= @user.errors.count %>件のエラーが発生したため、更新できませんでした。
+      </h2>
 
-<%= form_with model: @user do |f| %>
-  <% if @user.errors.any? %>
-  <div id="error_explanation">
-    <h2>
-      <%= @user.errors.count %>件のエラーが発生したため、更新できませんでした。
-    </h2>
+      <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-    <ul>
-      <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
+  <div class="mb-4"> 
+    <%= f.label :profile_image, "プロフィール画像", class: "form-label d-block" %>
+    <%= f.file_field :profile_image, class: "form-control"  %>
   </div>
-<% end %>
 
-<div> 
-  <%= f.label :profile_image, "プロフィール画像" %>
-  <%= f.file_field :profile_image %>
-</div>
+  <div class="mb-4">
+    <%= f.label :name, "名前", class: "form-label" %><br>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
 
-<div>
-  <%= f.label :name, "名前" %><br>
-  <%= f.text_field :name %>
-</div>
+  <div class="mb-4">
+    <%= f.label :email_address, "メールアドレス", class: "form-label" %><br>
+    <%= f.email_field :email_address, class: "form-control" %>
+  </div>
 
-<div>
-  <%= f.label :email_address, "メールアドレス" %><br>
-  <%= f.email_field :email_address %>
-</div>
+  <div class="mb-4">
+    <%= f.label :introduction, "自己紹介", class: "form-label" %><br>
+    <%= f.text_area :introduction, class: "form-control" %>
+  </div>
 
-<div>
-  <%= f.label :introduction, "自己紹介" %><br>
-  <%= f.text_area :introduction %>
-</div>
-
-<div>
-  <%= f.submit "更新する" %>
-</div>
+  <div class="mb-4">
+    <%= f.submit "更新する", class: "btn btn-success" %>
+  </div>
+  <% end %>
 <% end %>
