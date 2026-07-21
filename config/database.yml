@@ -22,22 +22,7 @@ test:
 
 # Store production database in the storage/ directory, which by default
 # is mounted as a persistent Docker volume in config/deploy.yml.
-production:
-  primary:
-    <<: *default
-    database: storage/production.sqlite3
-  cache:
-    <<: *default
-    database: storage/production_cache.sqlite3
-    migrations_paths: db/cache_migrate
-  queue:
-    <<: *default
-    database: storage/production_queue.sqlite3
-    migrations_paths: db/queue_migrate
-  cable:
-    <<: *default
-    database: storage/production_cable.sqlite3
-    migrations_paths: db/cable_migrate
+
 
 production:
   primary:
@@ -50,3 +35,30 @@ production:
     host: <%= ENV['DB_HOST'] %>
     username: <%= ENV['DB_USERNAME'] %>
     password: <%= ENV['DB_PASSWORD'] %>
+
+  cache:
+    adapter: mysql2
+    encoding: utf8mb4
+    host: <%= ENV["DB_HOST"] %>
+    database: <%= ENV["DB_DATABASE"] %>
+    username: <%= ENV["DB_USERNAME"] %>
+    password: <%= ENV["DB_PASSWORD"] %>
+    migrations_paths: db/cache_migrate
+
+  queue:
+    adapter: mysql2
+    encoding: utf8mb4
+    host: <%= ENV["DB_HOST"] %>
+    database: <%= ENV["DB_DATABASE"] %>
+    username: <%= ENV["DB_USERNAME"] %>
+    password: <%= ENV["DB_PASSWORD"] %>
+    migrations_paths: db/queue_migrate
+
+  cable:
+    adapter: mysql2
+    encoding: utf8mb4
+    host: <%= ENV["DB_HOST"] %>
+    database: <%= ENV["DB_DATABASE"] %>
+    username: <%= ENV["DB_USERNAME"] %>
+    password: <%= ENV["DB_PASSWORD"] %>
+    migrations_paths: db/cable_migrate

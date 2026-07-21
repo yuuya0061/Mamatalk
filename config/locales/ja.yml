@@ -9,7 +9,13 @@ ja:
         name: 名前
         email_address: メールアドレス
         password: パスワード
+        password_confirmation: パスワード確認
+
 
       post: 
         title: タイトル
         body: 本文
+
+  errors:
+    messages:
+     confirmation: "とパスワードが一致しません"

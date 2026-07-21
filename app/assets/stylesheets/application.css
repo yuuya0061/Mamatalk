@@ -1,5 +1,6 @@
 body {
   background-color: #fffaf3;
+  background-image: asset-url("hoge.jpg");
 }
 
 .title {
@@ -34,6 +35,7 @@ body {
   height: 200px;
   object-fit: cover;
 }
+
 /*
  * This is a manifest file that'll be compiled into application.css.
  *

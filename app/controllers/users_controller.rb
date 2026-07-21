@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-   allow_unauthenticated_access
+   
   before_action :correct_user, only: [:edit, :update, :destroy]
 
   def new

@@ -5,8 +5,7 @@
     <div class="card-body">
 
       <div class="d-flex align-items-center mb-3">
-          <%= image_tag post.user.profile_image,
-                size: "50x50",
+          <%= image_tag post.user.get_profile_image(50, 50),
                 class: "rounded-circle me-3" %>
 
         <div>
