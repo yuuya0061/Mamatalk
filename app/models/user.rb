@@ -23,4 +23,16 @@ class User < ApplicationRecord
       user.password = SecureRandom.urlsafe_base64
     end
   end
+
+   def self.search_for(content, method)
+    if method == "perfect"
+      where(name: content)
+    elsif method == "forward"
+      where("name LIKE ?", "#{content}%")
+    elsif method == "backward"
+      where("name LIKE ?", "#{content}%")
+    else
+      where("name LIKE ?", "#{content}%")
+    end
+  end
 end

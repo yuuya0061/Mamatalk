@@ -1,3 +1,21 @@
 <%= render "layouts/auth_layout", title: "投稿検索" do %>
 
+  <%= form_with url: search_posts_path, method: :get, local: true do |f| %>
+    <%= f.text_field :content %>
+    <%= f.select :method,options_for_select([
+        ["完全一致", "perfect"],
+        ["前方一致", "forward"],
+        ["後方一致", "backward"],
+        ["部分一致", "partial"] ]) %>
+
+    <%= f.submit "検索" %>
+  <% end %>
+  
+  <% if @posts.present? %>
+    <% @posts.each do |post| %>
+      <%= link_to post.title, post_path(post) %>
+      <br>
+    <% end %>
+  <% end %>
+
 <% end %>

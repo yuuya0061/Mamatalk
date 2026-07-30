@@ -1,6 +1,8 @@
 class Post < ApplicationRecord
   belongs_to :user
   has_one_attached :image
+  validates :title, presence: true
+  validates :body, presence: true
 
   def get_image
     unless image.attached?
@@ -9,7 +11,17 @@ class Post < ApplicationRecord
     end
     image
   end
-  
-  validates :title, presence: true
-  validates :body, presence: true
+
+  def self.search_for(content, method)
+    if method == "perfect"
+      where("title = ? OR body = ?", content, content)
+    elsif method == "forward"
+      where("title LIKE ? OR body LIKE ?", "#{content}%", "#{content}%")
+    elsif method == "backward"
+      where("title LIKE ? OR body LIKE ?", "#{content}%", "#{content}%")
+    else
+      where("title LIKE ? OR body LIKE ?", "#{content}%", "#{content}%")
+    end
+  end
+
 end
