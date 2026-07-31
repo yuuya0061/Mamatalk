@@ -2,7 +2,10 @@ Rails.application.routes.draw do
   get "search/posts", to: "searches#posts"
   get "search/users", to: "searches#users"
   resources :users,path_names: { new: 'sign_up' }
-  resources :posts
+  resources :posts do 
+    resources :comments, only: [:create, :destroy]
+  end
+
   root to: "homes#top"
   resource :session
   post "guest_log_in", to: "sessions#guest"
