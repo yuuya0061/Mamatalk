@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+   namespace :admin do
+    resource :session, only: [:new, :create, :destroy]
+  end
+  
   get "search/posts", to: "searches#posts"
   get "search/users", to: "searches#users"
   resources :users,path_names: { new: 'sign_up' }
