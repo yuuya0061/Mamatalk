@@ -1,4 +1,4 @@
-class PostsController < ApplicationController
+class Public::PostsController < Public::ApplicationController
   before_action :correct_user, only: [:edit, :update, :destroy]
 
   def new

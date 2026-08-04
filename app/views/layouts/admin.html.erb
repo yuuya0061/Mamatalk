@@ -1,37 +1,45 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>管理者画面</title>
+  <head>
+    <title><%= content_for(:title) || "Admin - Mamatalk" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
 
-  <%= csrf_meta_tags %>
-  <%= csp_meta_tag %>
+    <%= yield :head %>
 
-  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-  <%= javascript_include_tag "application", "data-turbo-track": "reload" %>
+    <link rel="icon" href="/icon.png" type="image/png">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/icon.png">
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
+    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
 
-<body>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <% if authenticated_admin? %>
+      <div class="text-right">
+        <%= link_to 'ログアウト', admin_session_path, data: { turbo_method: :delete, turbo_confirm: "ログアウトしますか？" } %>
+      </div>
+    <% end %>
+        <div class="container">
+      <div class="row justify-content-center">
+      <div class="col-md-6">
 
-<div class="container">
-  <div class="row justify-content-center">
-   <div class="col-md-6">
-
-    <div class="card shadow">
-     <div class="card-body">
-       <h2 class="text-center mb-4">
-        
-       
-       </h2>
-      <%= yield %>
-     </div>
+        <div class="card shadow">
+        <div class="card-body">
+          <h2 class="text-center mb-4">
+            
+          
+          </h2>
+          <%= yield %>
+        </div>
+        </div>
+      </div>
+      </div>
     </div>
-   </div>
-  </div>
-</div>
-
-
-
-</body>
+  </body>
 </html>

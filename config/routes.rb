@@ -1,14 +1,19 @@
 Rails.application.routes.draw do
    namespace :admin do
     resource :session, only: [:new, :create, :destroy]
+    resources :users, only: [:index, :show,:destroy] 
+
+    root to: "users#index"
   end
-  
+
+scope module: :public do
   get "search/posts", to: "searches#posts"
   get "search/users", to: "searches#users"
   resources :users,path_names: { new: 'sign_up' }
   resources :posts do 
     resources :comments, only: [:create, :destroy]
   end
+
 
   root to: "homes#top"
   resource :session
@@ -34,4 +39,5 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+end
 end
