@@ -21,23 +21,25 @@
   </head>
   <body>
     <% if authenticated_admin? %>
-      <div class="text-right">
-        <%= link_to 'ログアウト', admin_session_path, data: { turbo_method: :delete, turbo_confirm: "ログアウトしますか？" } %>
-      </div>
+    <nav class="navbar navbar-dark bg-dark px-4">
+    <span class="navbar-brand">管理画面</span>
+
+        <%= link_to 'ログアウト', admin_session_path, 
+        data: { turbo_method: :delete, turbo_confirm: "ログアウトしますか？" },
+        class: "btn btn-outline-light" %>
+      </nav>
     <% end %>
-        <div class="container">
-      <div class="row justify-content-center">
-      <div class="col-md-6">
+
+    <div class="container mt-4">
+     <div class="row justify-content-center">
+      <div class="col-md-8">
 
         <div class="card shadow">
-        <div class="card-body">
-          <h2 class="text-center mb-4">
-            
-          
-          </h2>
+         <div class="card-body">
           <%= yield %>
+         </div>
         </div>
-        </div>
+
       </div>
       </div>
     </div>
