@@ -1,0 +1,56 @@
+<h2 class="mb-4">投稿詳細</h2>
+ 
+ <div class="card shadow-sm mb-4">
+    <div class="card-body">
+
+    <h3><%= @post.title %></h3>
+
+    <p><%= @post.body %> </p>
+    
+    <%= image_tag @post.get_image, width: 200 %>
+    
+    <p>ユーザーネーム:<%= @post.user.name %></p>
+
+    <p>投稿日：<%= @post.created_at.strftime('%Y/%m/%d') %></p>
+    
+  <% if @post.user == Current.user %>
+  <%= link_to "編集", edit_post_path(@post) %>
+  <%= link_to "削除", post_path(@post), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "本当に消しますか?"} %>
+  <% end %>
+  <%= link_to "一覧に戻る", posts_path %>
+  
+
+  <h3>コメントを書く</h3>
+
+  <%= form_with model: [@post, Comment.new] do |f| %>
+    <div class="mb-3">
+      <%= f.text_area :body, class: "form-control", rows: 3 %>
+    </div>
+
+    <%= f.submit "コメントする", class: "btn btn-primary" %>
+  <% end %>
+
+  
+
+<p>コメント件数：<%= @post.comments.count %></p>
+
+
+  <h3>コメント一覧</h3>
+
+  <% @post.comments.each do |comment| %>
+    <div class="mb-3 corder-bottom pb-2">
+    <strong><%= comment.user.name %></strong>
+    <small><%= comment.created_at.strftime("%Y/%m/%d") %></small>
+
+    <p><%= comment.body %></p>
+    <% if comment.user == Current.user %>
+      <%= link_to "削除", post_comment_path(comment.post, comment), data: { turbo_method: :delete,turbo_confirm: "本当に消しますか?" } %>
+    <% end %>
+    </div>
+    <% end %>
+
+
+
+

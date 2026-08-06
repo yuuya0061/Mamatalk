@@ -1,4 +1,4 @@
-class PostsController < ApplicationController
+class Public::PostsController < Public::ApplicationController
   before_action :correct_user, only: [:edit, :update, :destroy]
 
   def new
@@ -6,11 +6,12 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
+    @posts = Post.page(params[:page])
   end
 
   def show
     @post = Post.find(params[:id])
+    @comment = Comment.new
     @user = @post.user
   end
 
