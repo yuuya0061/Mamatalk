@@ -31,9 +31,9 @@ class User < ApplicationRecord
     elsif method == "forward"
       where("name LIKE ?", "#{content}%")
     elsif method == "backward"
-      where("name LIKE ?", "#{content}%")
+      where("name LIKE ?", "%#{content}")
     else
-      where("name LIKE ?", "#{content}%")
+      where("name LIKE ?", "%#{content}%")
     end
   end
 end
