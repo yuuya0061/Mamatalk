@@ -19,9 +19,9 @@ class Post < ApplicationRecord
     elsif method == "forward"
       where("title LIKE ? OR body LIKE ?", "#{content}%", "#{content}%")
     elsif method == "backward"
-      where("title LIKE ? OR body LIKE ?", "#{content}%", "#{content}%")
+      where("title LIKE ? OR body LIKE ?", "%#{content}", "%#{content}")
     else
-      where("title LIKE ? OR body LIKE ?", "#{content}%", "#{content}%")
+      where("title LIKE ? OR body LIKE ?", "%#{content}%", "%#{content}%")
     end
   end
 

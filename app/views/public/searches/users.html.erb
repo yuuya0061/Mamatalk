@@ -11,6 +11,10 @@
     <%= f.submit "検索" %>
   <% end %>
 
+  <% if flash[:alert].present? %>
+   <p class="text-danger"><%= flash[:alert] %></p>
+   <% end %>
+
     <% if @users.present? %>
       <% @users.each do |user| %>
         <%= link_to user.name, user_path(user) %>

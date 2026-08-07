@@ -7,7 +7,7 @@ class Public::CommentsController < Public::ApplicationController
     if @comment.save
       redirect_to post_path(@post), notice: "コメントを投稿しました"
     else
-      redirect_to post_path(@post), alert: "コメントを投稿できませんでした"
+      redirect_to post_path(@post), alert: "コメントを入力してください"
     end
   end
 
