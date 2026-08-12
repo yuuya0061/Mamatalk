@@ -3,6 +3,15 @@
 <p><strong>名前:</strong> <%= @user.name %></p>
 <p><strong>メールアドレス:</strong> <%= @user.email_address %></p>
 
+<h2>投稿一覧</h2>
+
+<% @user.posts.each do |post| %>
+  <div>
+   <p><strong>タイトル：</strong><%= post.title %></p>
+   <p><strong>本文：</strong><%= post.body %></p>
+  <div>
+  <% end %>
+
 <%= link_to "退会させる",
             admin_user_path(@user),
             data: {
