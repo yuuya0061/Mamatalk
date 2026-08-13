@@ -2,6 +2,7 @@ Rails.application.routes.draw do
    namespace :admin do
     resource :session, only: [:new, :create, :destroy]
     resources :users, only: [:index, :show,:destroy] 
+    resources :posts, only: [:destroy]
 
     root to: "users#index"
   end
