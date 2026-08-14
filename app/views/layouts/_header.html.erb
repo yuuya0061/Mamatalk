@@ -25,7 +25,7 @@
          <%= link_to "新規投稿", new_post_path, class: "nav-link", data: { turbo: false } %>
        </li>
        <li class="nav-item">
-         <%= link_to "お気に入り", "#",class: "nav-link", data: { turbo: false } %>
+         <%= link_to "お気に入り", favorites_path, class: "nav-link", data: { turbo: false } %>
        </li>
         <li class="nav-item">
          <%= link_to "マイページ", user_path(Current.user), class: "nav-link", data: { turbo: false } %>
