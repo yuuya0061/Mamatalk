@@ -9,9 +9,24 @@
 <p>自己紹介</p>
 <p><%= @user.introduction %></p>
 
-<p>フォロー</P>
-
-<p>フォロワー</p>
+<td>
+  フォロー数：<%= @user.followings.count %>
+  <br>
+  フォロワー数：<%= @user.followers.count %>
+</td>
+<td>
+  <% if current_user != @user %>
+    <% if current_user.following?(@user) %>
+      <%= button_to user_relationships_path(@user), method: :delete do %>
+        フォローを外す
+      <% end %>
+    <% else %>
+      <%= button_to user_relationships_path(@user), method: :post do %>
+        フォローする
+      <% end %>
+    <% end %>
+  <% end %>
+</td>
 
 <% if @user == Current.user %>
   <%= link_to "プロフィール編集", edit_user_path(@user) %>
