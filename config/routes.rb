@@ -12,9 +12,11 @@ scope module: :public do
   get "search/users", to: "searches#users"
   resources :users,path_names: { new: 'sign_up' }
   resources :posts do 
+    resource :favorite, only: [:create, :destroy,]
     resources :comments, only: [:create, :destroy]
   end
 
+  get "favorites", to: "favorites#index"
 
   root to: "homes#top"
   resource :session
