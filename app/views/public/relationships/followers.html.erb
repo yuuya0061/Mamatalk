@@ -1,0 +1,27 @@
+<h2 class="mb-4">フォロワー</h2>
+
+<% @users.each do |user| %>
+  <div class="card mb-3">
+    <div class="card-body d-flex align-items-center">
+
+      <%= image_tag user.get_profile_image(50, 50),
+            class: "rounded-circle me-3" %>
+
+      <%= link_to user.name, user_path(user),
+            class: "me-auto" %>
+
+      <% if Current.user.following?(user) %>
+        <%= button_to "フォロー解除",
+              user_relationships_path(user),
+              method: :delete,
+              class: "btn btn-outline-danger btn-sm" %>
+      <% else %>
+        <%= button_to "フォローする",
+              user_relationships_path(user),
+              method: :post,
+              class: "btn btn-primary btn-sm" %>
+      <% end %>
+
+    </div>
+  </div>
+<% end %>
