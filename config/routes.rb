@@ -10,16 +10,21 @@ Rails.application.routes.draw do
 scope module: :public do
   get "search/posts", to: "searches#posts"
   get "search/users", to: "searches#users"
+
+  get "feed", to: "posts#feed"
+
   resources :users,path_names: { new: 'sign_up' } do
      resource :relationships, only: [:create, :destroy]
     get 'followings' => 'relationships#followings', as: 'followings'
     get 'followers' => 'relationships#followers', as: 'followers'
   end
+  
   resources :posts do 
     resource :favorite, only: [:create, :destroy,]
     resources :comments, only: [:create, :destroy]
-  end
+  end 
 
+ 
   get "favorites", to: "favorites#index"
 
   root to: "homes#top"

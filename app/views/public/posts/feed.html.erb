@@ -1,4 +1,4 @@
-<h2 class="mb-4 mt-3">お気に入り</h2>
+<h2 class="mb-4 mt-3">フィード</h2>
 
 <% @posts.each do |post| %>
   <div class="card shadow-sm mb-4">
@@ -43,3 +43,5 @@
     </div>
   </div>
 <% end %>
+<%= paginate @posts %>
+
