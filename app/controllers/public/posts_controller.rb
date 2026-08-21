@@ -46,6 +46,13 @@ class Public::PostsController < Public::ApplicationController
     redirect_to posts_path, notice: "投稿を削除しました"
   end
   
+
+  def feed
+    @posts = Post.where(user: Current.user.followings)
+                 .page(params[:page])
+                 .per(5)
+  end
+
   private
 
   def post_params
