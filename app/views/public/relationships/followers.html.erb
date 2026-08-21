@@ -1,4 +1,4 @@
-<h2 class="mb-4">フォロワー</h2>
+<h2 class="mb-4 mt-3">フォロワー</h2>
 
 <% @users.each do |user| %>
   <div class="card mb-3">
@@ -9,7 +9,7 @@
 
       <%= link_to user.name, user_path(user),
             class: "me-auto" %>
-
+     <% unless Current.user == user %>
       <% if Current.user.following?(user) %>
         <%= button_to "フォロー解除",
               user_relationships_path(user),
@@ -21,6 +21,7 @@
               method: :post,
               class: "btn btn-primary btn-sm" %>
       <% end %>
+     <% end %>
 
     </div>
   </div>
