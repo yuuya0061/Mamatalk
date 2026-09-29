@@ -30,7 +30,8 @@
 
 
 ## 設計書
-* 後ほど作成予定
+*　https://docs.google.com/spreadsheets/d/1lilkxLgyvMs5CO_QjJ_Lzn3xz_orRApLZhIQ5GnmgIc/edit?usp=sharing
+https://drive.google.com/file/d/1pDOCDypA80BYE_mF1QC0EZBtZUSkwBMT/view?usp=sharing
 ​
 ## 開発環境
 - OS：Windows
